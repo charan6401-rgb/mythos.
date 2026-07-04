@@ -6,6 +6,11 @@ import {
   Volume2, Type, Sun, Moon, Play, Scroll
 } from "lucide-react";
 
+import shadowCaveClash from "../assets/comic/shadow-cave-clash.png";
+import keshavaSwordStrike from "../assets/comic/keshava-sword-strike.png";
+import keshavaRitualCircle from "../assets/comic/keshava-ritual-circle.png";
+import sanskritSealSwirl from "../assets/comic/sanskrit-seal-swirl.png";
+import shivaNandiDecree from "../assets/comic/shiva-nandi-decree.png";
 // ── Types ─────────────────────────────────────────────────────
 type Page = "home" | "chapters" | "reader" | "characters" | "world" | "timeline" | "gallery" | "search" | "about" | "settings";
 
@@ -44,7 +49,7 @@ const CHAPTERS = [
     id: 1, num: "01",
     title: "The Soul Written in the Stars",
     sub: "Scenes 1–4 · 42 pages",
-    img: "https://images.unsplash.com/photo-1555861496-0666c8981751?w=600&h=820&fit=crop&auto=format",
+    img: shadowCaveClash,
     summary: "Shiva Keshava seals a volcanic demon using ancient Sanskrit rituals. That night, in an ethereal lotus dreamscape, he glimpses the face of his destined beloved. On Mount Kailash, Lord Shiva reveals the cosmic design to Nandi: love is the warrior's true purpose.",
     tags: ["Ritual", "Vision", "Destiny"],
     status: "available",
@@ -54,7 +59,7 @@ const CHAPTERS = [
     id: 2, num: "02",
     title: "The Forest of Forgotten Names",
     sub: "Coming Soon",
-    img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&h=820&fit=crop&auto=format",
+    img: shadowCaveClash, wide: true },
     summary: "Into the ancient Naimisha Forest, Shiva Keshava follows a thread of golden light only he can see. The trees whisper in Sanskrit. Something old watches from the roots.",
     tags: ["Forest", "Mystery", "Ancient Magic"],
     status: "soon",
@@ -64,7 +69,7 @@ const CHAPTERS = [
     id: 3, num: "03",
     title: "The Crimson Temple",
     sub: "Coming Soon",
-    img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&h=820&fit=crop&auto=format",
+    img: shivaNandiDecree, wide: true },
     summary: "Emerging from the celestial portal, Keshava stands before a temple bathed in saffron flame. The priests know his name. They have been waiting four hundred years.",
     tags: ["Temple", "Revelation", "Destiny"],
     status: "soon",
@@ -137,7 +142,7 @@ const CHARACTERS = [
     desc: "The supreme deity whose presence radiates infinite stillness even as universes burn behind his eyes. He does not intervene directly — he designs. The ritual, the dream, the disguise in the forest — all threads woven with the patience of eternity. His love for Keshava is the quiet, total love of a father who knows the full pattern.",
     traits: ["Omniscient", "Serene", "Enigmatic", "Just"],
     quote: "Love. He has already seen the soul destined to walk beside him.",
-    img: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=480&h=640&fit=crop&auto=format",
+    img: shivaNandiDecree,
     color: "#9080FF",
     chapter: "Ch. 1",
   },
@@ -147,7 +152,7 @@ const CHARACTERS = [
     desc: "Divine guardian of Kailash and eternal devotee of Lord Shiva. Nandi serves as the voice of earnest curiosity — asking the questions mortals cannot, drawing forth Lord Shiva's pronouncements about Keshava's destiny. His devotion is the purest model of faithful surrender.",
     traits: ["Devoted", "Protective", "Earnest", "Ancient"],
     quote: "Then what is Shiva Keshava's purpose, Mahadeva?",
-    img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=480&h=640&fit=crop&auto=format",
+    img: shadowCaveClash,
     color: "#E8820C",
     chapter: "Ch. 1",
   },
@@ -157,7 +162,7 @@ const CHARACTERS = [
     desc: "She appears only as a silhouette of cosmic light — gentle eyes holding ancient recognition, standing amidst a sea of glowing white lotuses. Her face is obscured, her name unspoken. Yet Keshava's soul recognizes her across a thousand lifetimes the moment she appears. She is the destination of every trial ahead.",
     traits: ["Ethereal", "Ancient Soul", "Fated", "Mysterious"],
     quote: "A face he had never seen, yet his soul recognized her instantly.",
-    img: "https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=480&h=640&fit=crop&auto=format",
+    img: shadowCaveClash, tags: ["Battle", "Darkness", "Ritual"] },
     color: "#C0B0FF",
     chapter: "Ch. 1",
   },
@@ -167,7 +172,7 @@ const CHARACTERS = [
     desc: "A grotesque entity with skin like cracked volcanic rock and eyes burning with unchecked hatred. Before dissolving into the stone floor beneath Keshava's Sanskrit light, it warned: 'We will consume this world... you cannot bind us forever.' One of many. A herald of far older darkness still unbound.",
     traits: ["Wrathful", "Ancient", "Prophetic", "Defeated"],
     quote: "We will consume this world... you cannot bind us forever...!",
-    img: "https://images.unsplash.com/photo-1555861496-0666c8981751?w=480&h=640&fit=crop&auto=format",
+    { title: "Blood-Red Dawn", scene: "Chapter 1 · The Cave", img: shadowCaveClash, tall: true },
     color: "#8B1A1A",
     chapter: "Ch. 1",
   },
@@ -194,15 +199,15 @@ const TIMELINE = [
 ];
 
 const GALLERY = [
-  { title: "Blood-Red Dawn", scene: "Chapter 1 · The Cave", img: "https://images.unsplash.com/photo-1504608524841-42f1e493e31b?w=580&h=740&fit=crop&auto=format", tall: true },
-  { title: "Mount Kailash", scene: "Chapter 1 · Divine Realm", img: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=740&h=480&fit=crop&auto=format", tall: false },
-  { title: "The Sacred Ritual", scene: "Chapter 1 · Scene 1", img: "https://images.unsplash.com/photo-1534935368420-9f2b7ccd0d35?w=580&h=740&fit=crop&auto=format", tall: true },
-  { title: "Lotus Dreamscape", scene: "Chapter 1 · Scene 2", img: "https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=740&h=480&fit=crop&auto=format", tall: false },
-  { title: "The Banyan Forest", scene: "Chapter 1 · Scene 4", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=580&h=740&fit=crop&auto=format", tall: true },
-  { title: "Cosmos Above Kailash", scene: "Chapter 1 · Scene 3", img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=740&h=480&fit=crop&auto=format", tall: false },
-  { title: "The Shadow Cave", scene: "Chapter 1 · Scene 1", img: "https://images.unsplash.com/photo-1555861496-0666c8981751?w=580&h=740&fit=crop&auto=format", tall: true },
-  { title: "Village at Morning", scene: "Chapter 1 · Scene 2", img: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=740&h=480&fit=crop&auto=format", tall: false },
-  { title: "The Crimson Temple", scene: "Chapter 3 Preview", img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=580&h=740&fit=crop&auto=format", tall: true },
+  { title: "Blood-Red Dawn", scene: "Chapter 1 · The Cave", img: shadowCaveClash,
+  { title: "Mount Kailash", scene: "Chapter 1 · Divine Realm", img: shadowCaveClash, wide: true },
+  { title: "The Sacred Ritual", scene: "Chapter 1 · Scene 1", img: shivaNandiDecree, wide: true },
+  { title: "Lotus Dreamscape", scene: "Chapter 1 · Scene 2", img: shivaNandiDecree,
+  { title: "The Banyan Forest", scene: "Chapter 1 · Scene 4", img: shadowCaveClash,
+  { title: "Cosmos Above Kailash", scene: "Chapter 1 · Scene 3", img: shadowCaveClash, 
+  { title: "The Shadow Cave", scene: "Chapter 1 · Scene 1",  img: shadowCaveClash, tall: true },
+  { title: "Village at Morning", scene: "Chapter 1 · Scene 2", 
+  { title: "The Crimson Temple", scene: "Chapter 3 Preview",
 ];
 
 const TYPE_COLORS: Record<string, string> = {
