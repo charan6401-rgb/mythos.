@@ -7,16 +7,16 @@ import {
 } from "lucide-react";
 
 // ── Asset Imports ─────────────────────────────────────────────
-import shadowCave from "@/assets/shadow-cave.webp";
-import banyanForest from "@/assets/banyan-forest.webp";
-import crimsonTemple from "@/assets/crimson-temple.webp";
-import sacredRitual from "@/assets/sacred-ritual.webp";
-import lotusDreamscape from "@/assets/lotus-dreamscape.webp";
-import keshavaVillage from "@/assets/keshava-village.webp";
-import mountKailash from "@/assets/mount-kailash.webp";
-import cosmosAboveKailash from "@/assets/cosmos-above-kailash.webp";
-import shivaKeshavaPortrait from "@/assets/shiva-keshava-portrait.webp";
-import bloodRedDawn from "@/assets/blood-red-dawn.webp";
+import shadowCave from "@/assets/shadow-cave.png";
+import banyanForest from "@/assets/banyan-forest.png";
+import crimsonTemple from "@/assets/crimson-temple.png";
+import sacredRitual from "@/assets/sacred-ritual.png";
+import lotusDreamscape from "@/assets/lotus-dreamscape.png";
+import keshavaVillage from "@/assets/keshava-village.png";
+import mountKailash from "@/assets/mount-kailash.png";
+import cosmosAboveKailash from "@/assets/cosmos-above-kailash.png";
+import shivaKeshavaPortrait from "@/assets/shiva-keshava-portrait.png";
+import bloodRedDawn from "@/assets/blood-red-dawn.png";
 
 // ── Types ─────────────────────────────────────────────────────
 type Page = "home" | "chapters" | "reader" | "characters" | "world" | "timeline" | "gallery" | "search" | "about" | "settings";
