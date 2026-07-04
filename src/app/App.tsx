@@ -6,12 +6,17 @@ import {
   Volume2, Type, Sun, Moon, Play, Scroll
 } from "lucide-react";
 
-// ── Chapter 1 comic art (replaces Unsplash placeholders) ──────
-import shadowCaveClash from "../assets/comic/shadow-cave-clash.png";
-import keshavaSwordStrike from "../assets/comic/keshava-sword-strike.png";
-import keshavaRitualCircle from "../assets/comic/keshava-ritual-circle.png";
-import sanskritSealSwirl from "../assets/comic/sanskrit-seal-swirl.png";
-import shivaNandiDecree from "../assets/comic/shiva-nandi-decree.png";
+// ── Asset Imports ─────────────────────────────────────────────
+import shadowCave from "@/assets/shadow-cave.webp";
+import banyanForest from "@/assets/banyan-forest.webp";
+import crimsonTemple from "@/assets/crimson-temple.webp";
+import sacredRitual from "@/assets/sacred-ritual.webp";
+import lotusDreamscape from "@/assets/lotus-dreamscape.webp";
+import keshavaVillage from "@/assets/keshava-village.webp";
+import mountKailash from "@/assets/mount-kailash.webp";
+import cosmosAboveKailash from "@/assets/cosmos-above-kailash.webp";
+import shivaKeshavaPortrait from "@/assets/shiva-keshava-portrait.webp";
+import bloodRedDawn from "@/assets/blood-red-dawn.webp";
 
 // ── Types ─────────────────────────────────────────────────────
 type Page = "home" | "chapters" | "reader" | "characters" | "world" | "timeline" | "gallery" | "search" | "about" | "settings";
@@ -51,7 +56,7 @@ const CHAPTERS = [
     id: 1, num: "01",
     title: "The Soul Written in the Stars",
     sub: "Scenes 1–4 · 42 pages",
-    img: shadowCaveClash,
+    img: shadowCave,
     summary: "Shiva Keshava seals a volcanic demon using ancient Sanskrit rituals. That night, in an ethereal lotus dreamscape, he glimpses the face of his destined beloved. On Mount Kailash, Lord Shiva reveals the cosmic design to Nandi: love is the warrior's true purpose.",
     tags: ["Ritual", "Vision", "Destiny"],
     status: "available",
@@ -61,7 +66,7 @@ const CHAPTERS = [
     id: 2, num: "02",
     title: "The Forest of Forgotten Names",
     sub: "Coming Soon",
-    img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&h=820&fit=crop&auto=format",
+    img: banyanForest,
     summary: "Into the ancient Naimisha Forest, Shiva Keshava follows a thread of golden light only he can see. The trees whisper in Sanskrit. Something old watches from the roots.",
     tags: ["Forest", "Mystery", "Ancient Magic"],
     status: "soon",
@@ -71,7 +76,7 @@ const CHAPTERS = [
     id: 3, num: "03",
     title: "The Crimson Temple",
     sub: "Coming Soon",
-    img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&h=820&fit=crop&auto=format",
+    img: crimsonTemple,
     summary: "Emerging from the celestial portal, Keshava stands before a temple bathed in saffron flame. The priests know his name. They have been waiting four hundred years.",
     tags: ["Temple", "Revelation", "Destiny"],
     status: "soon",
@@ -83,21 +88,21 @@ const READER_SCENES = [
   {
     id: 1, title: "The Ritual of Shadows",
     panels: [
-      { desc: "Ultra-wide establishing shot: a jagged mountain fissure beneath a blood-red sky. Black, miasmic smoke billows from the cave's mouth.", sfx: "RUMBLE...", char: null, dialogue: null, img: shadowCaveClash, wide: true },
+      { desc: "Ultra-wide establishing shot: a jagged mountain fissure beneath a blood-red sky. Black, miasmic smoke billows from the cave's mouth.", sfx: "RUMBLE...", char: null, dialogue: null, img: shadowCave, wide: true },
       { desc: "Close-up of a grotesque demon — skin like cracked volcanic rock, eyes burning with unchecked hatred. It lunges forward, claws extended.", sfx: null, char: "DEMON", dialogue: "Mortal dust! You dare stand against the hunger of the dark?!", img: null, wide: false },
-      { desc: "Shiva Keshava steps into the light. Broad-shouldered, clothes torn from battle. His gaze is utterly steady — devoid of fear, filled with profound resolve. He dodges a crushing blow. Rock shatters behind him.", sfx: "CRACK!!!", char: null, dialogue: null, img: "https://images.unsplash.com/photo-1534935368420-9f2b7ccd0d35?w=880&h=480&fit=crop&auto=format", wide: true },
-      { desc: "Dynamic diagonal panel: Shiva Keshava drives a sacred trishul-tipped dagger into the demon's shoulder. Blood mixed with dark mist erupts from the wound.", sfx: "SCHLIT!!!", char: "DEMON", dialogue: "AAAGHH! This... this bloodline again...!", img: keshavaSwordStrike, wide: false },
-      { desc: "Shiva Keshava lands gracefully on one knee, palms pressed to the earth. A brilliant golden aura bursts from his body, casting away the violet shadows.", sfx: null, char: "SHIVA KESHAVA", dialogue: "By the breath of the Creator, by the light that binds the cosmos... let the darkness return to its true form.", img: keshavaRitualCircle, wide: false },
-      { desc: "DOUBLE-PAGE SPREAD — Glowing Sanskrit hymns weave through the air like ribbons of solid light, encircling the thrashing beast. The demon's form dissolves into flat, ink-like shadows sinking into stone.", sfx: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्...", char: "DEMON", dialogue: "We will consume this world... you cannot bind us forever...!", img: sanskritSealSwirl, wide: true },
+      { desc: "Shiva Keshava steps into the light. Broad-shouldered, clothes torn from battle. His gaze is utterly steady — devoid of fear, filled with profound resolve. He dodges a crushing blow. Rock shatters behind him.", sfx: "CRACK!!!", char: null, dialogue: null, img: sacredRitual, wide: true },
+      { desc: "Dynamic diagonal panel: Shiva Keshava drives a sacred trishul-tipped dagger into the demon's shoulder. Blood mixed with dark mist erupts from the wound.", sfx: "SCHLIT!!!", char: "DEMON", dialogue: "AAAGHH! This... this bloodline again...!", img: null, wide: false },
+      { desc: "Shiva Keshava lands gracefully on one knee, palms pressed to the earth. A brilliant golden aura bursts from his body, casting away the violet shadows.", sfx: null, char: "SHIVA KESHAVA", dialogue: "By the breath of the Creator, by the light that binds the cosmos... let the darkness return to its true form.", img: null, wide: false },
+      { desc: "DOUBLE-PAGE SPREAD — Glowing Sanskrit hymns weave through the air like ribbons of solid light, encircling the thrashing beast. The demon's form dissolves into flat, ink-like shadows sinking into stone.", sfx: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्...", char: "DEMON", dialogue: "We will consume this world... you cannot bind us forever...!", img: null, wide: true },
     ],
   },
   {
     id: 2, title: "A Dream in the Night",
     panels: [
-      { desc: "Transition to an ethereal dreamscape. The cave fades into a sea of glowing white lotuses and starlight. Warm golds, soft pinks, deep cosmic blues.", sfx: null, char: "NARRATION", dialogue: "Not even an ant is born without the will of Lord Shiva.", img: "https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=880&h=480&fit=crop&auto=format", wide: true },
+      { desc: "Transition to an ethereal dreamscape. The cave fades into a sea of glowing white lotuses and starlight. Warm golds, soft pinks, deep cosmic blues.", sfx: null, char: "NARRATION", dialogue: "Not even an ant is born without the will of Lord Shiva.", img: lotusDreamscape, wide: true },
       { desc: "Through shimmering mist, a silhouette appears — a young woman amidst the starlight. Her face is partially obscured by a veil of cosmic light, but her eyes — gentle, deep, filled with ancient recognition — lock onto the viewer.", sfx: null, char: "SHIVA KESHAVA", dialogue: "Who... are you?", img: null, wide: false },
       { desc: "Tight close-up of Shiva Keshava's sleeping face. No longer a hardened warrior — he is filled with profound, aching peace. A single tear slips down his cheek.", sfx: null, char: "NARRATION", dialogue: "A face he had never seen in the waking world, yet his soul recognized her instantly. It was a vision more real than reality itself.", img: null, wide: false },
-      { desc: "Morning. Bright sunlight pours over a vibrant Indian village square. Birds fly past a stone well. Shiva Keshava sits on a wooden bench, staring at his hands, completely lost in thought.", sfx: null, char: null, dialogue: null, img: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=880&h=480&fit=crop&auto=format", wide: true },
+      { desc: "Morning. Bright sunlight pours over a vibrant Indian village square. Birds fly past a stone well. Shiva Keshava sits on a wooden bench, staring at his hands, completely lost in thought.", sfx: null, char: null, dialogue: null, img: keshavaVillage, wide: true },
       { desc: "Neighbors lean into the frame, grinning mischievously. One jabs an elbow into Shiva's side.", sfx: null, char: "NEIGHBOR 1", dialogue: "Look at him! Our fierce warrior looks like he's been struck by an arrow — and not the kind from a bow!", img: null, wide: false },
       { desc: "Shiva Keshava blushes slightly, a quiet innocent smile gracing his lips. He looks up at the sky, hand resting over his heart.", sfx: null, char: "SHIVA KESHAVA", dialogue: "It wasn't a mere dream... it felt as if my heart has belonged to her for a thousand lifetimes. I only wish I knew where her path begins.", img: null, wide: false },
     ],
@@ -105,18 +110,18 @@ const READER_SCENES = [
   {
     id: 3, title: "The Decree of Kailash",
     panels: [
-      { desc: "Awe-inspiring shot of Mount Kailash towering above the clouds. Peaks gleam with divine, pristine snow. The atmosphere radiates infinite peace and cosmic stillness.", sfx: null, char: null, dialogue: null, img: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=880&h=480&fit=crop&auto=format", wide: true },
+      { desc: "Awe-inspiring shot of Mount Kailash towering above the clouds. Peaks gleam with divine, pristine snow. The atmosphere radiates infinite peace and cosmic stillness.", sfx: null, char: null, dialogue: null, img: mountKailash, wide: true },
       { desc: "Lord Shiva sits in profound meditation on the sacred peak — pale ash skin, crescent moon in matted hair, tiger skin around his shoulders. Nandi, the divine bull, stands respectfully nearby, bowing his head.", sfx: null, char: "NANDI", dialogue: "My Lord... why did Shiva Keshava witness the vision of a woman from his future? What is the reason behind such a dream?", img: null, wide: false },
       { desc: "Lord Shiva slowly opens his eyes. They contain the depth of universes, burning with gentle wisdom. A serene smile plays on his lips.", sfx: null, char: "LORD SHIVA", dialogue: "Every soul enters this world with a purpose, Nandi. No thread is spun by destiny without a tapestry to belong to.", img: null, wide: false },
       { desc: "Nandi steps closer, his expression filled with earnest devotion.", sfx: null, char: "NANDI", dialogue: "Then what is Shiva Keshava's purpose, Mahadeva? Why show him a destination before the journey has even begun?", img: null, wide: false },
       { desc: "Stunning close-up profile of Lord Shiva as he looks out over the mortal realm. The stars themselves seem to align behind him.", sfx: null, char: "LORD SHIVA", dialogue: "Love.", img: null, wide: false },
-      { desc: "The framing widens — the vast cosmos swirls above Kailash.", sfx: null, char: "LORD SHIVA", dialogue: "He has already seen the soul destined to walk beside him. He will search for her across the lands, guided by the echo in his chest. But remember, Nandi... the path of a true seeker will not be easy. Destiny itself shall stand against him, testing whether his bond is made of fleeting desire or eternal truth. Yet... he will never abandon the one written into his fate.", img: shivaNandiDecree, wide: true },
+      { desc: "The framing widens — the vast cosmos swirls above Kailash.", sfx: null, char: "LORD SHIVA", dialogue: "He has already seen the soul destined to walk beside him. He will search for her across the lands, guided by the echo in his chest. But remember, Nandi... the path of a true seeker will not be easy. Destiny itself shall stand against him, testing whether his bond is made of fleeting desire or eternal truth. Yet... he will never abandon the one written into his fate.", img: cosmosAboveKailash, wide: true },
     ],
   },
   {
     id: 4, title: "The Ascetic's Lesson",
     panels: [
-      { desc: "Dense ancient forest. Heavy canopy lets through only sharp beams of sunlight. Shiva Keshava walks alone, traveling pack on his shoulders, eyes scanning the horizon.", sfx: null, char: null, dialogue: null, img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=880&h=480&fit=crop&auto=format", wide: true },
+      { desc: "Dense ancient forest. Heavy canopy lets through only sharp beams of sunlight. Shiva Keshava walks alone, traveling pack on his shoulders, eyes scanning the horizon.", sfx: null, char: null, dialogue: null, img: banyanForest, wide: true },
       { desc: "An old wandering ascetic steps from behind a massive banyan tree — tattered clothes, wooden staff, eyes gleaming with otherworldly intellect. Keshava bows immediately in respect.", sfx: null, char: "ASCETIC", dialogue: "Young warrior... you walk with the weight of the future on your shoulders. Tell me, do you believe your strength alone can overcome destiny?", img: null, wide: false },
       { desc: "Shiva Keshava rises, posture straightening. His eyes burn with determination.", sfx: null, char: "SHIVA KESHAVA", dialogue: "If destiny requires me to cross oceans or shatter mountains to fulfill my purpose, I will trust in my strength and the gods. I will not break.", img: null, wide: false },
       { desc: "Action sequence. The ascetic raises his staff. Shiva draws his sword. They clash — the ascetic effortlessly deflects every strike with a simple turn of his wrist.", sfx: "TAK!", char: "ASCETIC", dialogue: "A bold claim. Let us see if your spine is as strong as your words.", img: null, wide: false },
@@ -134,7 +139,7 @@ const CHARACTERS = [
     desc: "Broad-shouldered and fearless, Keshava carries the burden of a sacred bloodline that can seal demons into shadow using ancient Sanskrit rituals. Beneath the hardened warrior is a soul of profound humility — every victory belongs to the divine. When destiny shows him a face he has never seen but always known, he cannot rest until he finds her.",
     traits: ["Devout", "Fearless", "Humble", "Relentless"],
     quote: "I am merely the instrument. The victory belongs to Him.",
-    img: "https://images.unsplash.com/photo-1594879152375-17c6ddf2c6fd?w=480&h=640&fit=crop&auto=format",
+    img: shivaKeshavaPortrait,
     color: "#C4933A",
     chapter: "Ch. 1",
   },
@@ -144,7 +149,7 @@ const CHARACTERS = [
     desc: "The supreme deity whose presence radiates infinite stillness even as universes burn behind his eyes. He does not intervene directly — he designs. The ritual, the dream, the disguise in the forest — all threads woven with the patience of eternity. His love for Keshava is the quiet, total love of a father who knows the full pattern.",
     traits: ["Omniscient", "Serene", "Enigmatic", "Just"],
     quote: "Love. He has already seen the soul destined to walk beside him.",
-    img: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=480&h=640&fit=crop&auto=format",
+    img: mountKailash,
     color: "#9080FF",
     chapter: "Ch. 1",
   },
@@ -154,7 +159,7 @@ const CHARACTERS = [
     desc: "Divine guardian of Kailash and eternal devotee of Lord Shiva. Nandi serves as the voice of earnest curiosity — asking the questions mortals cannot, drawing forth Lord Shiva's pronouncements about Keshava's destiny. His devotion is the purest model of faithful surrender.",
     traits: ["Devoted", "Protective", "Earnest", "Ancient"],
     quote: "Then what is Shiva Keshava's purpose, Mahadeva?",
-    img: shivaNandiDecree,
+    img: cosmosAboveKailash,
     color: "#E8820C",
     chapter: "Ch. 1",
   },
@@ -164,7 +169,7 @@ const CHARACTERS = [
     desc: "She appears only as a silhouette of cosmic light — gentle eyes holding ancient recognition, standing amidst a sea of glowing white lotuses. Her face is obscured, her name unspoken. Yet Keshava's soul recognizes her across a thousand lifetimes the moment she appears. She is the destination of every trial ahead.",
     traits: ["Ethereal", "Ancient Soul", "Fated", "Mysterious"],
     quote: "A face he had never seen, yet his soul recognized her instantly.",
-    img: "https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=480&h=640&fit=crop&auto=format",
+    img: lotusDreamscape,
     color: "#C0B0FF",
     chapter: "Ch. 1",
   },
@@ -174,18 +179,18 @@ const CHARACTERS = [
     desc: "A grotesque entity with skin like cracked volcanic rock and eyes burning with unchecked hatred. Before dissolving into the stone floor beneath Keshava's Sanskrit light, it warned: 'We will consume this world... you cannot bind us forever.' One of many. A herald of far older darkness still unbound.",
     traits: ["Wrathful", "Ancient", "Prophetic", "Defeated"],
     quote: "We will consume this world... you cannot bind us forever...!",
-    img: shadowCaveClash,
+    img: shadowCave,
     color: "#8B1A1A",
     chapter: "Ch. 1",
   },
 ];
 
 const LOCATIONS = [
-  { name: "Mount Kailash", type: "Divine Realm", desc: "The sacred peak towering above all clouds — where divine silence can be heard. Lord Shiva meditates here at the axis of the cosmos. Its pristine snow carries the light of ten thousand suns. Every decree made here echoes through all three worlds.", img: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=780&h=440&fit=crop&auto=format", tags: ["Divine", "Sacred", "Meditation"] },
-  { name: "The Shadow Cave", type: "Battleground · Seal Site", desc: "A jagged mountain fissure where violet miasma chokes the air and black smoke billows into a blood-red sky. The walls hold ink-black imprints of every demon Keshava has sealed. The cave breathes. Something in the deepest dark has not been sealed yet.", img: shadowCaveClash, tags: ["Battle", "Darkness", "Ritual"] },
-  { name: "The Lotus Dreamscape", type: "Ethereal Plane", desc: "A plane at the edge of sleep and destiny — warm golds, soft pinks, deep cosmic blues. Glowing white lotuses float on starlit water. Here, Keshava first saw the face written into his fate, and where the soul-contract between them was made before either was born.", img: "https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=780&h=440&fit=crop&auto=format", tags: ["Vision", "Soul", "Destiny"] },
-  { name: "The Ancient Banyan Forest", type: "Sacred Wilderness", desc: "Trees older than the Vedas, roots entangled with the bones of forgotten kingdoms. Sharp beams of sunlight cut through the canopy like divine proclamations. Here, Lord Shiva walked disguised as an ordinary ascetic — to test the warrior who claimed his spine was as strong as his words.", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=780&h=440&fit=crop&auto=format", tags: ["Forest", "Test", "Portal"] },
-  { name: "Keshava's Village", type: "Mortal Realm · Home", desc: "A vibrant village square where women gather at stone wells, birds sing at dawn, and neighbors speak in cheerful gossip. The ordinary world Keshava protects and returns to. Here, the warrior blushes. Here, the soul aches for something it cannot name.", img: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=780&h=440&fit=crop&auto=format", tags: ["Home", "Peace", "Mortal"] },
+  { name: "Mount Kailash", type: "Divine Realm", desc: "The sacred peak towering above all clouds — where divine silence can be heard. Lord Shiva meditates here at the axis of the cosmos. Its pristine snow carries the light of ten thousand suns. Every decree made here echoes through all three worlds.", img: mountKailash, tags: ["Divine", "Sacred", "Meditation"] },
+  { name: "The Shadow Cave", type: "Battleground · Seal Site", desc: "A jagged mountain fissure where violet miasma chokes the air and black smoke billows into a blood-red sky. The walls hold ink-black imprints of every demon Keshava has sealed. The cave breathes. Something in the deepest dark has not been sealed yet.", img: shadowCave, tags: ["Battle", "Darkness", "Ritual"] },
+  { name: "The Lotus Dreamscape", type: "Ethereal Plane", desc: "A plane at the edge of sleep and destiny — warm golds, soft pinks, deep cosmic blues. Glowing white lotuses float on starlit water. Here, Keshava first saw the face written into his fate, and where the soul-contract between them was made before either was born.", img: lotusDreamscape, tags: ["Vision", "Soul", "Destiny"] },
+  { name: "The Ancient Banyan Forest", type: "Sacred Wilderness", desc: "Trees older than the Vedas, roots entangled with the bones of forgotten kingdoms. Sharp beams of sunlight cut through the canopy like divine proclamations. Here, Lord Shiva walked disguised as an ordinary ascetic — to test the warrior who claimed his spine was as strong as his words.", img: banyanForest, tags: ["Forest", "Test", "Portal"] },
+  { name: "Keshava's Village", type: "Mortal Realm · Home", desc: "A vibrant village square where women gather at stone wells, birds sing at dawn, and neighbors speak in cheerful gossip. The ordinary world Keshava protects and returns to. Here, the warrior blushes. Here, the soul aches for something it cannot name.", img: keshavaVillage, tags: ["Home", "Peace", "Mortal"] },
 ];
 
 const TIMELINE = [
@@ -201,15 +206,15 @@ const TIMELINE = [
 ];
 
 const GALLERY = [
-  { title: "Blood-Red Dawn", scene: "Chapter 1 · The Cave", img: shadowCaveClash, tall: true },
-  { title: "Mount Kailash", scene: "Chapter 1 · Divine Realm", img: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=740&h=480&fit=crop&auto=format", tall: false },
-  { title: "The Sacred Ritual", scene: "Chapter 1 · Scene 1", img: "https://images.unsplash.com/photo-1534935368420-9f2b7ccd0d35?w=580&h=740&fit=crop&auto=format", tall: true },
-  { title: "Lotus Dreamscape", scene: "Chapter 1 · Scene 2", img: "https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=740&h=480&fit=crop&auto=format", tall: false },
-  { title: "The Banyan Forest", scene: "Chapter 1 · Scene 4", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=580&h=740&fit=crop&auto=format", tall: true },
-  { title: "Cosmos Above Kailash", scene: "Chapter 1 · Scene 3", img: shivaNandiDecree, tall: false },
-  { title: "The Shadow Cave", scene: "Chapter 1 · Scene 1", img: shadowCaveClash, tall: true },
-  { title: "Village at Morning", scene: "Chapter 1 · Scene 2", img: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=740&h=480&fit=crop&auto=format", tall: false },
-  { title: "The Crimson Temple", scene: "Chapter 3 Preview", img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=580&h=740&fit=crop&auto=format", tall: true },
+  { title: "Blood-Red Dawn", scene: "Chapter 1 · The Cave", img: bloodRedDawn, tall: true },
+  { title: "Mount Kailash", scene: "Chapter 1 · Divine Realm", img: mountKailash, tall: false },
+  { title: "The Sacred Ritual", scene: "Chapter 1 · Scene 1", img: sacredRitual, tall: true },
+  { title: "Lotus Dreamscape", scene: "Chapter 1 · Scene 2", img: lotusDreamscape, tall: false },
+  { title: "The Banyan Forest", scene: "Chapter 1 · Scene 4", img: banyanForest, tall: true },
+  { title: "Cosmos Above Kailash", scene: "Chapter 1 · Scene 3", img: cosmosAboveKailash, tall: false },
+  { title: "The Shadow Cave", scene: "Chapter 1 · Scene 1", img: shadowCave, tall: true },
+  { title: "Village at Morning", scene: "Chapter 1 · Scene 2", img: keshavaVillage, tall: false },
+  { title: "The Crimson Temple", scene: "Chapter 3 Preview", img: crimsonTemple, tall: true },
 ];
 
 const TYPE_COLORS: Record<string, string> = {
