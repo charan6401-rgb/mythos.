@@ -1240,24 +1240,28 @@ function Footer({ nav }: { nav: (p: Page) => void }) {
   return (
     <footer className="border-t mt-12" style={{ borderColor: "rgba(196,147,58,0.12)", background: "#04040A" }}>
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="col-span-2 md:col-span-2">
             <div className="text-2xl mb-3 gold-shimmer" style={{ fontFamily: "var(--font-display)" }}>Shiva Keshava</div>
             <div className="text-sm mb-4" style={{ fontFamily: "var(--font-label)", color: "#C4933A", letterSpacing: "0.12em" }}>ॐ — Souls Written in the Stars</div>
             <p className="text-sm leading-relaxed max-w-sm" style={{ color: "#8A8A9A" }}>
               An Indian Mythological Fantasy Manhwa rooted in sacred scripture — where the warrior's heart and the cosmos align.
             </p>
             <div className="flex gap-2 mt-6">
-              {["Twitter", "Instagram", "Patreon"].map(s => (
-                <button key={s} className="px-3 py-1.5 rounded text-xs transition-all hover:bg-white/5"
+              {[
+                { label: "Twitter", url: "https://twitter.com/YOUR_HANDLE" },
+                { label: "Instagram", url: "https://instagram.com/YOUR_HANDLE" },
+                { label: "Patreon", url: "https://patreon.com/YOUR_HANDLE" },
+              ].map(s => (
+                <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded text-xs transition-all hover:bg-white/5"
                   style={{ fontFamily: "var(--font-label)", color: "#8A8A9A", border: "1px solid rgba(196,147,58,0.1)" }}>
-                  {s}
-                </button>
+                  {s.label}
+                </a>
               ))}
             </div>
           </div>
-
           {/* Nav links */}
           <div>
             <div className="text-xs tracking-widest mb-5" style={{ fontFamily: "var(--font-label)", color: "#C4933A" }}>NAVIGATE</div>
@@ -1271,7 +1275,6 @@ function Footer({ nav }: { nav: (p: Page) => void }) {
               ))}
             </div>
           </div>
-
           {/* Story info */}
           <div>
             <div className="text-xs tracking-widest mb-5" style={{ fontFamily: "var(--font-label)", color: "#C4933A" }}>THE STORY</div>
@@ -1285,7 +1288,6 @@ function Footer({ nav }: { nav: (p: Page) => void }) {
             </div>
           </div>
         </div>
-
         <div className="mt-12 pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4"
           style={{ borderColor: "rgba(196,147,58,0.08)" }}>
           <div className="text-xs" style={{ fontFamily: "var(--font-label)", color: "#8A8A9A" }}>
@@ -1299,7 +1301,6 @@ function Footer({ nav }: { nav: (p: Page) => void }) {
     </footer>
   );
 }
-
 // ── App ────────────────────────────────────────────────
 export default function App() {
   const [page, setPage] = useState<Page>("home");
