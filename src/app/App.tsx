@@ -1250,9 +1250,9 @@ function Footer({ nav }: { nav: (p: Page) => void }) {
             </p>
             <div className="flex gap-2 mt-6">
               {[
-                { label: "use insta>", url: "https://www.instagram.com/vv.comics/" },
-                { label: "Instagram", url: "https://www.instagram.com/vv.comics/" },
-                { label: "<use insta", url: "https://www.instagram.com/vv.comics/" },
+                { label: "use insta>", url: "https://www.instagram.com/vedicverse.comics/" },
+                { label: "Instagram", url: "https://www.instagram.com/vedicverse.comics/" },
+                { label: "<use insta", url: "https://www.instagram.com/vedicverse.comics/" },
               ].map(s => (
                 <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer"
                   className="px-3 py-1.5 rounded text-xs transition-all hover:bg-white/5"
