@@ -232,37 +232,65 @@ const TYPE_LABELS: Record<string, string> = {
 
 // ── Hero Scene SVG ─────────────────────────────────────
 function HeroScene() {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMove = (e: MouseEvent) => {
+      setTilt({
+        x: (e.clientX / window.innerWidth - 0.5) * 2,
+        y: (e.clientY / window.innerHeight - 0.5) * 2,
+      });
+    };
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
   return (
     <div className="absolute inset-0 overflow-hidden">
+      {/* Cinematic artwork background — Mount Kailash under the cosmos, with subtle parallax drift */}
       <div
-        className="absolute inset-0"
-        style={{ background: "linear-gradient(180deg, #020408 0%, #100308 55%, #3D0808 100%)" }}
-      />
+        className="absolute inset-0 transition-transform duration-500 ease-out"
+        style={{ transform: `translate3d(${tilt.x * 10}px, ${tilt.y * 8}px, 0) scale(1.08)` }}
+      >
+        <img
+          src={mountKailash}
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "center 38%" }}
+        />
+      </div>
+
+      {/* Cinematic color grade + legibility overlays */}
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(2,4,8,0.5) 0%, rgba(16,3,8,0.42) 45%, rgba(7,7,15,0.97) 100%)" }} />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 26% 66%, rgba(77,0,153,0.26), transparent 55%)" }} />
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 76% 22%, rgba(196,147,58,0.24), transparent 52%)" }} />
+
       <svg
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full transition-transform duration-500 ease-out"
         viewBox="0 0 1400 900"
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
+        style={{ transform: `translate3d(${tilt.x * -16}px, ${tilt.y * -12}px, 0)` }}
       >
         <defs>
           <radialGradient id="divGlow" cx="72%" cy="38%" r="48%">
-            <stop offset="0%"   stopColor="#C4933A" stopOpacity="0.42" />
-            <stop offset="55%"  stopColor="#8B6020" stopOpacity="0.14" />
+            <stop offset="0%"   stopColor="#C4933A" stopOpacity="0.38" />
+            <stop offset="55%"  stopColor="#8B6020" stopOpacity="0.12" />
             <stop offset="100%" stopColor="#C4933A" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="shadGlow" cx="28%" cy="60%" r="38%">
-            <stop offset="0%"   stopColor="#4D0099" stopOpacity="0.52" />
+            <stop offset="0%"   stopColor="#4D0099" stopOpacity="0.42" />
             <stop offset="100%" stopColor="#4D0099" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="moonGlow" cx="82%" cy="11%" r="10%">
             <stop offset="0%"   stopColor="#E8D5A0" stopOpacity="0.55" />
             <stop offset="100%" stopColor="#E8D5A0" stopOpacity="0" />
           </radialGradient>
-          <linearGradient id="kailashFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stopColor="#D0C8B8" stopOpacity="0.7" />
-            <stop offset="45%"  stopColor="#60687A" stopOpacity="0.45" />
-            <stop offset="100%" stopColor="#1A1E28" stopOpacity="0.15" />
-          </linearGradient>
+          <radialGradient id="moonHalo" cx="82%" cy="11%" r="20%">
+            <stop offset="0%"   stopColor="#8FB4E8" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="#8FB4E8" stopOpacity="0" />
+          </radialGradient>
           <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%"   stopColor="#07070F" stopOpacity="0" />
             <stop offset="100%" stopColor="#07070F" stopOpacity="0.97" />
@@ -290,12 +318,22 @@ function HeroScene() {
             <feGaussianBlur stdDeviation="6" result="b" />
             <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
+          <filter id="auraBlur">
+            <feGaussianBlur stdDeviation="5" />
+          </filter>
         </defs>
+
+        {/* Nebula clouds drifting through the cosmic sky */}
+        <ellipse cx="240" cy="170" rx="270" ry="150" fill="#4D0099" opacity="0.12" filter="url(#rayBlur)" className="animate-shadow-breath" />
+        <ellipse cx="1180" cy="600" rx="320" ry="180" fill="#1A3A7A" opacity="0.10" filter="url(#rayBlur)" style={{ animation: "shadowBreath 8s ease-in-out infinite" }} />
+        <ellipse cx="700" cy="120" rx="240" ry="110" fill="#6A2A8A" opacity="0.08" filter="url(#rayBlur)" style={{ animation: "shadowBreath 10s ease-in-out infinite" }} />
 
         {/* Atmospheric glow fields */}
         <ellipse cx="1010" cy="340" rx="680" ry="440" fill="url(#divGlow)" className="animate-divine-ray" />
         <ellipse cx="370"  cy="520" rx="450" ry="310" fill="url(#shadGlow)" className="animate-shadow-breath" />
         <ellipse cx="1150" cy="100" rx="175" ry="110" fill="url(#moonGlow)" />
+        {/* Blue moonlight highlight */}
+        <ellipse cx="1150" cy="100" rx="280" ry="190" fill="url(#moonHalo)" />
 
         {/* Stars */}
         {STARS.map((s, i) => (
@@ -311,84 +349,30 @@ function HeroScene() {
 
         {/* Divine light rays */}
         <g filter="url(#rayBlur)" className="animate-divine-ray">
-          <line x1="1370" y1="170" x2="380" y2="760" stroke="#C4933A" strokeWidth="65" opacity="0.08" />
-          <line x1="1400" y1="230" x2="500" y2="860" stroke="#C4933A" strokeWidth="42" opacity="0.07" />
-          <line x1="1310" y1="140" x2="340" y2="710" stroke="#D4A840" strokeWidth="28" opacity="0.09" />
-          <line x1="1340" y1="280" x2="460" y2="820" stroke="#C4933A" strokeWidth="18" opacity="0.06" />
+          <line x1="1370" y1="170" x2="380" y2="760" stroke="#C4933A" strokeWidth="65" opacity="0.07" />
+          <line x1="1400" y1="230" x2="500" y2="860" stroke="#C4933A" strokeWidth="42" opacity="0.06" />
+          <line x1="1310" y1="140" x2="340" y2="710" stroke="#D4A840" strokeWidth="28" opacity="0.08" />
+          <line x1="1340" y1="280" x2="460" y2="820" stroke="#C4933A" strokeWidth="18" opacity="0.05" />
         </g>
 
-        {/* Mount Kailash silhouette */}
-        <path
-          d="M 610,900 L 655,768 L 698,726 L 738,748 L 790,658 L 832,692 L 878,574 L 918,616 L 958,502 L 998,544 L 1038,422 L 1078,464 L 1108,350 L 1148,392 L 1192,332 L 1232,374 L 1272,414 L 1312,476 L 1358,554 L 1400,636 L 1400,900 Z"
-          fill="url(#kailashFill)"
-        />
-
-        {/* Forest left layer 1 (darker, closer) */}
-        <path
-          d="M 0,900 L 0,658 L 28,610 L 56,652 L 76,574 L 100,620 L 128,546 L 158,592 L 182,524 L 208,568 L 234,510 L 262,554 L 288,538 L 318,900 Z"
-          fill="#050810" opacity="0.96"
-        />
-        {/* Forest left layer 2 */}
-        <path
-          d="M 0,900 L 0,695 L 22,658 L 46,682 L 68,644 L 90,666 L 116,630 L 140,656 L 165,622 L 194,648 L 225,900 Z"
-          fill="#020408" opacity="0.98"
-        />
-
-        {/* Forest right */}
-        <path
-          d="M 1400,900 L 1400,658 L 1372,610 L 1344,652 L 1324,574 L 1300,620 L 1272,546 L 1242,592 L 1218,524 L 1192,568 L 1166,510 L 1138,554 L 1112,538 L 1082,900 Z"
-          fill="#050810" opacity="0.95"
-        />
-
-        {/* Cave entrance */}
-        <ellipse cx="310" cy="690" rx="178" ry="138" fill="#000000" opacity="0.97" />
-        <ellipse cx="310" cy="696" rx="148" ry="112" fill="#2D0050" opacity="0.32" />
-        <ellipse cx="310" cy="702" rx="108" ry="82"  fill="#3D0070" opacity="0.22" />
-
-        {/* Cave smoke tendrils */}
-        <path d="M 254,558 Q 232,492 248,428" fill="none" stroke="#1A0030" strokeWidth="22" strokeLinecap="round" opacity="0.48" />
-        <path d="M 312,546 Q 302,482 322,418" fill="none" stroke="#1A0030" strokeWidth="26" strokeLinecap="round" opacity="0.4" />
-        <path d="M 372,558 Q 394,492 378,428" fill="none" stroke="#1A0030" strokeWidth="20" strokeLinecap="round" opacity="0.44" />
-
-        {/* ── Warrior Silhouette — Shiva Keshava ── */}
-        <g transform="translate(574, 372)">
-          {/* Aura glow */}
-          <ellipse cx="80" cy="195" rx="115" ry="210" fill="#C4933A" opacity="0.06" filter="url(#goldBloom)" />
-          <ellipse cx="80" cy="195" rx="72"  ry="145" fill="#C4933A" opacity="0.04" />
-          {/* Head */}
+        {/* ── Distant Divine Aura — a faint, far-off presence watching over the mountain ── */}
+        <g transform="translate(640, 520) scale(0.42)" opacity="0.15" filter="url(#auraBlur)">
+          <ellipse cx="80" cy="195" rx="115" ry="210" fill="#C4933A" opacity="0.10" filter="url(#goldBloom)" />
           <circle cx="80" cy="22" r="25" fill="#020408" />
-          {/* Topknot */}
           <ellipse cx="80" cy="4"  rx="11" ry="15" fill="#020408" />
-          {/* Neck */}
           <rect x="73" y="45" width="14" height="14" rx="2" fill="#020408" />
-          {/* Torso - broad */}
           <path d="M 28 60 L 14 100 L 20 170 L 140 170 L 146 100 L 132 60 Q 110 52 80 52 Q 50 52 28 60 Z" fill="#020408" />
-          {/* Sacred thread across chest */}
-          <path d="M 50 62 Q 80 78 110 62" fill="none" stroke="#C4933A" strokeWidth="1.4" opacity="0.45" />
-          {/* Left arm raised — holding trishul dagger */}
           <path d="M 30 72 L -2 26 L -9 4 L 6 10 L 3 26 L 32 77 Z" fill="#020408" />
-          {/* Dagger shaft */}
-          <rect x="-14" y="-8" width="3.5" height="26" rx="1" fill="#C4933A" opacity="0.88" />
-          {/* Trishul tip */}
-          <path d="M -12.3,-8 L -8.8,-24 L -5.3,-8 Z" fill="#C4933A" opacity="0.92" />
-          <path d="M -17,-14 L -13,-24"   fill="none" stroke="#C4933A" strokeWidth="1.5" opacity="0.7" />
-          <path d="M -4,-14 L -8,-24"    fill="none" stroke="#C4933A" strokeWidth="1.5" opacity="0.7" />
-          {/* Dagger glow */}
-          <ellipse cx="-8.5" cy="-20" rx="6" ry="10" fill="#C4933A" opacity="0.35" filter="url(#goldBloom)" />
-          {/* Right arm — braced toward ground */}
+          <rect x="-14" y="-8" width="3.5" height="26" rx="1" fill="#C4933A" opacity="0.7" />
+          <path d="M -12.3,-8 L -8.8,-24 L -5.3,-8 Z" fill="#C4933A" opacity="0.75" />
           <path d="M 130 72 L 166 112 L 172 140 L 158 135 L 154 118 L 128 76 Z" fill="#020408" />
-          {/* Waist band */}
-          <rect x="22" y="163" width="116" height="9" rx="3" fill="#0A0405" />
-          {/* Dhoti pants */}
           <path d="M 36 172 L 26 268 L 52 268 L 80 208 L 108 268 L 134 268 L 124 172 Z" fill="#020408" />
-          {/* Gold silhouette outline */}
           <path d="M 28 60 L 14 100 L 20 170 L 140 170 L 146 100 L 132 60 Q 110 52 80 52 Q 50 52 28 60 Z"
-            fill="none" stroke="#C4933A" strokeWidth="1.2" opacity="0.32" />
-          <circle cx="80" cy="22" r="25" fill="none" stroke="#C4933A" strokeWidth="1" opacity="0.22" />
+            fill="none" stroke="#C4933A" strokeWidth="1.2" opacity="0.25" />
         </g>
 
         {/* ── Celestial Girl Silhouette — upper right ── */}
-        <g transform="translate(955, 95)" opacity="0.26">
+        <g transform="translate(955, 95)" opacity="0.22">
           <ellipse cx="56" cy="145" rx="115" ry="175" fill="#9080FF" opacity="0.1" />
           <ellipse cx="56" cy="100" rx="72"  ry="112" fill="#C0B0FF" opacity="0.07" />
           {/* Head */}
@@ -412,11 +396,12 @@ function HeroScene() {
           ))}
         </g>
 
-        {/* Sanskrit glyphs floating */}
+        {/* Glowing Sanskrit glyphs floating */}
         {SANSKRIT.map((g, i) => (
           <text key={i} x={g.x} y={g.y} fontSize={g.sz}
             fill="#C4933A" opacity={g.op}
             fontFamily="'Crimson Pro', Georgia, serif"
+            filter="url(#softGlow)"
             style={{ animation: `driftFloat 9s ${g.d} infinite alternate ease-in-out` }}
           >
             {g.t}
@@ -556,25 +541,29 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
         <HeroScene />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto" style={{ animation: "fadeInUp 1s ease 0.3s both" }}>
           <SectionLabel>Indian Mythological Fantasy Manhwa</SectionLabel>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl mb-4 leading-none gold-shimmer" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.01em" }}>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl mb-5 leading-none gold-shimmer" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.01em" }}>
             Shiva Keshava
           </h1>
-          <p className="text-xl md:text-2xl mb-4" style={{ color: "#C4933A", fontFamily: "var(--font-heading)", letterSpacing: "0.12em" }}>
+          <p className="text-xl md:text-2xl mb-6" style={{ color: "#C4933A", fontFamily: "var(--font-heading)", letterSpacing: "0.12em" }}>
             ॐ — Souls Written in the Stars
           </p>
-          <p className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "#9A9090" }}>
+          <p className="text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed" style={{ color: "#9A9090" }}>
             A warrior bound to the divine. A demon sealed in shadow. A face glimpsed in a dream that his soul has always known. One decree from Lord Shiva on Mount Kailash — and a destiny that cannot be denied.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button onClick={() => nav("reader")}
-              className="flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              style={{ background: "linear-gradient(135deg, #8B1A1A, #C4933A)", color: "#F0E8D8", fontFamily: "var(--font-label)", letterSpacing: "0.08em", boxShadow: "0 4px 24px rgba(196,147,58,0.25)" }}>
+              className="flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-medium transition-all duration-300 hover:scale-105"
+              style={{ background: "linear-gradient(135deg, #8B1A1A, #C4933A)", color: "#F0E8D8", fontFamily: "var(--font-label)", letterSpacing: "0.08em", boxShadow: "0 4px 24px rgba(196,147,58,0.25)" }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 8px 40px rgba(196,147,58,0.5)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 4px 24px rgba(196,147,58,0.25)"; }}>
               <Play size={16} />
               Start Reading
             </button>
             <button onClick={() => nav("world")}
-              className="flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-medium transition-all duration-300 hover:bg-white/10"
-              style={{ border: "1px solid rgba(196,147,58,0.35)", color: "#C4933A", fontFamily: "var(--font-label)", letterSpacing: "0.08em" }}>
+              className="flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-medium transition-all duration-300 hover:bg-white/10 hover:scale-105"
+              style={{ border: "1px solid rgba(196,147,58,0.35)", color: "#C4933A", fontFamily: "var(--font-label)", letterSpacing: "0.08em" }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 0 32px rgba(196,147,58,0.28)"; e.currentTarget.style.borderColor = "rgba(196,147,58,0.7)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = "rgba(196,147,58,0.35)"; }}>
               <Globe size={16} />
               Explore the World
             </button>
@@ -630,28 +619,53 @@ function HomePage({ nav }: { nav: (p: Page) => void }) {
       </section>
 
       {/* Characters Preview */}
-      <section className="bg-card py-24 border-y" style={{ borderColor: "rgba(196,147,58,0.1)" }}>
+      <section className="bg-card py-32 relative">
+        {/* Gold gradient divider — top */}
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(196,147,58,0.5) 50%, transparent)" }} />
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionLabel><Users size={12} /> Characters</SectionLabel>
           <SectionTitle sub="The souls bound by cosmic design">Meet the Cast</SectionTitle>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-7">
             {CHARACTERS.map((c, i) => (
               <button key={i} onClick={() => nav("characters")}
-                className="group text-left rounded-xl overflow-hidden transition-transform duration-300 hover:-translate-y-1"
-                style={{ background: "#141420", border: "1px solid rgba(196,147,58,0.1)" }}>
-                <div className="aspect-[3/4] relative overflow-hidden">
-                  <img src={c.img} alt={c.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, transparent 50%, ${c.color}22 100%)` }} />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <div className="w-full h-0.5 rounded mb-2" style={{ background: c.color }} />
-                    <div className="text-xs font-medium" style={{ fontFamily: "var(--font-heading)", color: "#F0E8D8" }}>{c.name}</div>
-                    <div className="text-xs mt-0.5" style={{ fontFamily: "var(--font-label)", color: "#8A8A9A", fontSize: "0.65rem" }}>{c.role.split("·")[0]}</div>
-                  </div>
+                className="group text-left relative overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2"
+                style={{
+                  background: "#141420",
+                  border: "1px solid rgba(196,147,58,0.12)",
+                  borderRadius: "20px",
+                  height: "440px",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.35)",
+                }}>
+                <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: "20px" }}>
+                  <img src={c.img} alt={c.name} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" style={{ objectPosition: "center 22%" }} />
+                </div>
+                {/* Base tint for depth */}
+                <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: "20px", background: "linear-gradient(180deg, transparent 38%, rgba(8,8,16,0.9) 100%)" }} />
+                {/* Golden hover glow ring */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ borderRadius: "20px", boxShadow: `inset 0 0 0 1.5px ${c.color}88, 0 0 36px 6px rgba(196,147,58,0.35)` }}
+                />
+                {/* Glass-gradient name/role overlay */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 p-4"
+                  style={{
+                    borderBottomLeftRadius: "20px",
+                    borderBottomRightRadius: "20px",
+                    background: "linear-gradient(180deg, rgba(10,10,20,0) 0%, rgba(10,10,20,0.6) 45%, rgba(10,10,20,0.92) 100%)",
+                    backdropFilter: "blur(6px)",
+                    WebkitBackdropFilter: "blur(6px)",
+                  }}>
+                  <div className="h-0.5 rounded mb-2 transition-all duration-500 ease-out" style={{ width: "2rem", background: c.color }} />
+                  <div className="text-sm font-medium" style={{ fontFamily: "var(--font-heading)", color: "#F0E8D8" }}>{c.name}</div>
+                  <div className="text-xs mt-0.5" style={{ fontFamily: "var(--font-label)", color: "#9A9090", fontSize: "0.68rem" }}>{c.role.split("·")[0]}</div>
                 </div>
               </button>
             ))}
           </div>
         </div>
+        {/* Gold gradient divider — bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(196,147,58,0.5) 50%, transparent)" }} />
       </section>
 
       {/* World Preview */}
