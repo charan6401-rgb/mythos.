@@ -16,6 +16,10 @@ import keshavaVillage from "@/assets/keshava-village.png";
 import mountKailash from "@/assets/mount-kailash.png";
 import cosmosAboveKailash from "@/assets/cosmos-above-kailash.png";
 import shivaKeshavaPortrait from "@/assets/shiva-keshava-portrait.png";
+import lordShivaPortrait from "@/assets/lord-shiva-portrait.png";
+import nandiPortrait from "@/assets/nandi-portrait.png";
+import mysteriousGirlPortrait from "@/assets/mysterious-girl-portrait.png";
+import volcanicDemonPortrait from "@/assets/volcanic-demon-portrait.png";
 import bloodRedDawn from "@/assets/blood-red-dawn.png";
 
 // ── Types ─────────────────────────────────────────────────────
@@ -149,7 +153,7 @@ const CHARACTERS = [
     desc: "The supreme deity whose presence radiates infinite stillness even as universes burn behind his eyes. He does not intervene directly — he designs. The ritual, the dream, the disguise in the forest — all threads woven with the patience of eternity. His love for Keshava is the quiet, total love of a father who knows the full pattern.",
     traits: ["Omniscient", "Serene", "Enigmatic", "Just"],
     quote: "Love. He has already seen the soul destined to walk beside him.",
-    img: mountKailash,
+    img: lordShivaPortrait,
     color: "#9080FF",
     chapter: "Ch. 1",
   },
@@ -159,7 +163,7 @@ const CHARACTERS = [
     desc: "Divine guardian of Kailash and eternal devotee of Lord Shiva. Nandi serves as the voice of earnest curiosity — asking the questions mortals cannot, drawing forth Lord Shiva's pronouncements about Keshava's destiny. His devotion is the purest model of faithful surrender.",
     traits: ["Devoted", "Protective", "Earnest", "Ancient"],
     quote: "Then what is Shiva Keshava's purpose, Mahadeva?",
-    img: cosmosAboveKailash,
+    img: nandiPortrait,
     color: "#E8820C",
     chapter: "Ch. 1",
   },
@@ -169,7 +173,7 @@ const CHARACTERS = [
     desc: "She appears only as a silhouette of cosmic light — gentle eyes holding ancient recognition, standing amidst a sea of glowing white lotuses. Her face is obscured, her name unspoken. Yet Keshava's soul recognizes her across a thousand lifetimes the moment she appears. She is the destination of every trial ahead.",
     traits: ["Ethereal", "Ancient Soul", "Fated", "Mysterious"],
     quote: "A face he had never seen, yet his soul recognized her instantly.",
-    img: lotusDreamscape,
+    img: mysteriousGirlPortrait,
     color: "#C0B0FF",
     chapter: "Ch. 1",
   },
@@ -179,7 +183,7 @@ const CHARACTERS = [
     desc: "A grotesque entity with skin like cracked volcanic rock and eyes burning with unchecked hatred. Before dissolving into the stone floor beneath Keshava's Sanskrit light, it warned: 'We will consume this world... you cannot bind us forever.' One of many. A herald of far older darkness still unbound.",
     traits: ["Wrathful", "Ancient", "Prophetic", "Defeated"],
     quote: "We will consume this world... you cannot bind us forever...!",
-    img: shadowCave,
+    img: volcanicDemonPortrait,
     color: "#8B1A1A",
     chapter: "Ch. 1",
   },
